@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Budger.module.css'
 import BurgerIngredients from "./budget-ingredients/BudgerIngredients";
 
-const Burger = (props) =>{
+const Burger = (props) => {
     const burgerStuffing = Object.keys(props.ingredients).map((ingredient) => {
         let count = props.ingredients[ingredient];
         let newElement = [];
@@ -13,17 +13,17 @@ const Burger = (props) =>{
         return newElement;
 
     });
-    const ingredientsCount = burgerStuffing.reduce((acc,current)=>{
-       acc += current.length;
-       return acc;
-    },0);
+    const ingredientsCount = burgerStuffing.reduce((acc, current) => {
+        acc += current.length;
+        return acc;
+    }, 0);
     return (
         <div className={classes.Burger}>
-            <BurgerIngredients type="bread-top" />
-            {(ingredientsCount > 0)?burgerStuffing:<p>Add Ingredients to your Burger, otherwise its just wheat</p>}
+            <BurgerIngredients type="bread-top"/>
+            {(ingredientsCount > 0) ? burgerStuffing : <p>Add Ingredients to your Burger, otherwise its just wheat</p>}
 
 
-            <BurgerIngredients type="bread-bottom" />
+            <BurgerIngredients type="bread-bottom"/>
         </div>
     );
 };
