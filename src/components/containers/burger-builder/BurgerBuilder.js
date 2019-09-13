@@ -1,22 +1,15 @@
 import React, {Fragment, useState} from 'react'
-import Burger from "../burger/Budger";
-import {BuildControls} from "../build-controls/BuildControls";
-import {RATES} from "../burger/budget-ingredients/ingredients-constants";
+import Burger from "../../burger/Budger";
+import {BuildControls} from "../../build-controls/BuildControls";
+import {RATES} from "../..//burger/budget-ingredients/ingredients-constants";
 import * as _ from "lodash"
 import classes from "./BurgerBuilder.module.css"
+import {initialState} from "./BurgerBuilder.constants";
+import {Modal} from "../../common/modal/Modal";
+import {OrderSummary} from "../../common/order-summary/OrderSummary";
 
 const BurgerBuilder = (props) => {
-    const initState = {
-        ingredients: {
-            salad: 0,
-            bacon: 0,
-            cheese: 0,
-            meat: 0
-        },
-        totalCost: 4,
-        canOrder:false
-    };
-
+    const initState = initialState;
     const updateDisabledObject = () => {
         return Object.keys(initState.ingredients).reduce((disabledObject, currentItem) => {
             disabledObject[currentItem] = (initState.ingredients[currentItem] === 0);
@@ -59,10 +52,26 @@ const BurgerBuilder = (props) => {
         updateIngredients(newIngredients);
     };
 
+    const showModal = () => {
+        const newState = {...burgerState};
+        newState.showOrderSummary = true;
+        updateIngredients(newState);
+    };
+    
+    const hideModal = () => {
+        const newState = {...burgerState};
+        newState.showOrderSummary = false;
+        updateIngredients(newState);
+    };
+
     return (
 
         <Fragment>
-            <div className={classes.OrderButtonPosition}><button className={classes.OrderButton} disabled={!burgerState.canOrder}>Order Now</button></div>
+            {console.log(burgerState.showOrderSummary)}
+            <Modal showModal={burgerState.showOrderSummary} hideModalFn={hideModal}>
+                <OrderSummary ingredients={burgerState.ingredients}/>
+            </Modal>
+            <div className={classes.OrderButtonPosition}><button className={classes.OrderButton} disabled={!burgerState.canOrder} onClick={()=>{showModal()}}>Order Now</button></div>
 
             <div><Burger {...burgerState}/></div>
             <div>Total Price: <span className={classes.priceNumeral}>$ {burgerState.totalCost.toFixed(2)}</span></div>

@@ -6,7 +6,6 @@ export const BuildControl = (props) => {
     return (
         <div className={classes.BuildControl}>
             <div className={classes.Label}>{props.label}</div>
-            {console.log(props.isRemoveIngredientDisabled)}
             <button className={classes.Less} onClick={() => props.removeIngredientHandler(props.controlType)}
                     disabled={props.isRemoveIngredientDisabled[props.controlType]}>Less
             </button>
