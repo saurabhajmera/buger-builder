@@ -1,5 +1,5 @@
 .BuildControls {
-    width: 100%;
+    max-width: 50%;
     background: #cf8f2e;
     display: flex;
     flex-flow: column;
@@ -7,4 +7,18 @@
     box-shadow: 0 2px 1px #ccc;
     margin: auto;
     padding: 10px 0;
+
+}
+@media (max-width:1000px) {
+    .BuildControls {
+        max-width: 60%;
+    }
+
+}
+
+@media (max-width:500px) {
+    .BuildControls {
+        max-width: 100%;
+    }
+
 }
