@@ -3,6 +3,7 @@ import Burger from "../burger/Budger";
 import {BuildControls} from "../build-controls/BuildControls";
 import {RATES} from "../burger/budget-ingredients/ingredients-constants";
 import * as _ from "lodash"
+import classes from "./BurgerBuilder.module.css"
 
 const BurgerBuilder = (props) => {
     const initState = {
@@ -51,8 +52,8 @@ const BurgerBuilder = (props) => {
     return (
 
         <Fragment>
-            <div>{JSON.stringify(burgerState)}</div>
             <div><Burger {...burgerState}/></div>
+            <div>Total Price: <span className={classes.priceNumeral}>$ {burgerState.totalCost.toFixed(2)}</span></div>
             <BuildControls addIngredientHandler={addIngredientHandler}
                            removeIngredientHandler={removeIngredientHandler} isRemoveIngredientDisabled={burgerState.disabled}></BuildControls>
         </Fragment>
