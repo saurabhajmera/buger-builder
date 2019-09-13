@@ -13,7 +13,8 @@ const BurgerBuilder = (props) => {
             cheese: 0,
             meat: 0
         },
-        totalCost: 4
+        totalCost: 4,
+        canOrder:false
     };
 
     const updateDisabledObject = () => {
@@ -26,6 +27,13 @@ const BurgerBuilder = (props) => {
 
     const [burgerState, updateIngredients] = useState(_.assign(initState,{disabled:isDisabled}));
 
+    const getUpdatedCanOrderFlag = (ingredients) => {
+        const totalQuantity = Object.keys(ingredients).reduce((sum, key) => {
+            sum += ingredients[key];
+            return sum;
+        }, 0);
+        return totalQuantity > 0;
+    };
 
 
     const addIngredientHandler = (type) => {
@@ -35,6 +43,7 @@ const BurgerBuilder = (props) => {
         newIngredients.ingredients[type] = newCount;
         newIngredients.totalCost += RATES[type];
         newIngredients.disabled[type] = (newIngredients.ingredients[type] === 0);
+        newIngredients.canOrder = getUpdatedCanOrderFlag(newIngredients.ingredients);
         updateIngredients(newIngredients);
     };
 
@@ -46,12 +55,15 @@ const BurgerBuilder = (props) => {
         //disable remove button if the new count is zero
         newIngredients.disabled[type] = (newIngredients.ingredients[type] === 0);
         newIngredients.totalCost = (burgerState.totalCost > initState.totalCost) ? burgerState.totalCost - RATES[type] : initState.totalCost;
+        newIngredients.canOrder = getUpdatedCanOrderFlag(newIngredients.ingredients);
         updateIngredients(newIngredients);
     };
 
     return (
 
         <Fragment>
+            <div className={classes.OrderButtonPosition}><button className={classes.OrderButton} disabled={!burgerState.canOrder}>Order Now</button></div>
+
             <div><Burger {...burgerState}/></div>
             <div>Total Price: <span className={classes.priceNumeral}>$ {burgerState.totalCost.toFixed(2)}</span></div>
             <BuildControls addIngredientHandler={addIngredientHandler}
