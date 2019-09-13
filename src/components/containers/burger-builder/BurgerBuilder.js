@@ -67,7 +67,6 @@ const BurgerBuilder = (props) => {
     return (
 
         <Fragment>
-            {console.log(burgerState.showOrderSummary)}
             <Modal showModal={burgerState.showOrderSummary} hideModalFn={hideModal}>
                 <OrderSummary ingredients={burgerState.ingredients}/>
             </Modal>
