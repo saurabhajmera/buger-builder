@@ -12,3 +12,4 @@ export const RATES = {
     bacon: 1.5
 
 };
+

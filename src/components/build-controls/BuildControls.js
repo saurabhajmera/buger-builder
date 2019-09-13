@@ -5,6 +5,7 @@ import {BuildControl} from "../build-controls/build-control/BuildControl"
 import PropTypes from "prop-type";
 
 export const BuildControls = (props) => {
+
     const controlsLists = CONTROLS.map(control => {
         return (
             <BuildControl key={control.label} label={control.label} controlType={control.type} {...props}></BuildControl>
@@ -20,5 +21,6 @@ export const BuildControls = (props) => {
 BuildControls.propType = {
     label:PropTypes.string,
     addIngredientHandler:PropTypes.function,
-    removeIngredientHandler:PropTypes.function
+    removeIngredientHandler:PropTypes.function,
+    isRemoveIngredientDisabled:PropTypes.object
 };
