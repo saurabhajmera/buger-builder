@@ -7,8 +7,10 @@ import {NavigationItem} from "../navigation-item/NavigationItem";
 export const Toolbar = (props) => (
     <header className={classes.Toolbar}>
         <div>MENU</div>
-        <Logo/>
-        <nav>
+        <div className={classes.Logo}>
+            <Logo/>
+        </div>
+        <nav className={classes.DesktopOnly}>
             <NavigationItems>
                 <NavigationItem destination={'/'} active>Burger Builder</NavigationItem>
                 <NavigationItem destination={'/'}>Checkout</NavigationItem>
