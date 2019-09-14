@@ -1,20 +1,27 @@
-import React from "react"
+import React, {Fragment} from "react"
 import classes from "./Modal.module.css"
 import PropTypes from "prop-type";
+import {Backdrop} from "../backdrop/Backdrop";
 
 export const Modal = (props) => {
     const showModal = (props.showModal === true) ? true : false;
 
     return (
-        <div className={classes.Modal} style={{display: (showModal) ? 'block' : 'none'}}>
-            <div className={classes.HeaderSection}>
-                <button className={classes.CloseButton} onClick={() => {
-                    props.hideModalFn()
-                }}>X
-                </button>
+        <Fragment>
+            <Backdrop showBackdrop={showModal}/>
+            <div className={classes.Modal} style={{
+                transform: showModal ? 'translateY(0)' : 'translateY(-100vh)',
+                opacity: (showModal) ? '1' : '0'
+            }}>
+                <div className={classes.HeaderSection}>
+                    <button className={classes.CloseButton} onClick={() => {
+                        props.hideModalFn()
+                    }}>X
+                    </button>
+                </div>
+                {props.children}
             </div>
-            {props.children}
-        </div>
+        </Fragment>
     );
 };
 
