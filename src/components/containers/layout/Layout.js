@@ -12,7 +12,9 @@ export const Layout = (props) => {
     };
 
     const showSideDrawer = () => {
-        updateLayoutState({showBackDrop:!layoutState.showBackDrop});
+        updateLayoutState((currentState) => {
+            return {showBackDrop: !currentState.showBackDrop};
+        });
     };
 
     return (
