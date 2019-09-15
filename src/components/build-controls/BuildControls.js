@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './BuildControls.module.css'
 import {CONTROLS} from "../burger/budget-ingredients/ingredients-constants";
 import {BuildControl} from "../build-controls/build-control/BuildControl"
-import PropTypes from "prop-type";
+import PropTypes from "prop-types";
 
 export const BuildControls = (props) => {
 
@@ -20,7 +20,7 @@ export const BuildControls = (props) => {
 
 BuildControls.propType = {
     label:PropTypes.string,
-    addIngredientHandler:PropTypes.function,
-    removeIngredientHandler:PropTypes.function,
+    addIngredientHandler:PropTypes.func,
+    removeIngredientHandler:PropTypes.func,
     isRemoveIngredientDisabled:PropTypes.object
 };

@@ -12,8 +12,15 @@
     transition: transform 0.3s ease-out;
 }
 
+.SideDrawerBackdrop{
+    display: block;
+}
+
 @media (min-width: 500px){
     .SideDrawer {
+        display: none;
+    }
+    .SideDrawerBackdrop{
         display: none;
     }
 }

@@ -1,6 +1,6 @@
 import React from "react"
 import styles from "./Button.module.css"
-import PropTypes from "prop-type";
+import PropTypes from "prop-types";
 
 export const Button = (props) => {
 
@@ -12,7 +12,7 @@ export const Button = (props) => {
 
 Button.propType = {
     buttonType: PropTypes.string,
-    clickHandler: PropTypes.function
+    clickHandler: PropTypes.func
 };
 
 

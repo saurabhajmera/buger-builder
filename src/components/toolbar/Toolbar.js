@@ -3,10 +3,12 @@ import classes from './Toolbar.module.css'
 import {Logo} from "../logo/Logo";
 import {NavigationItems} from "../navigation-items/NavigationItems";
 import {NavigationItem} from "../navigation-item/NavigationItem";
+import PropTypes from "prop-types"
+
 
 export const Toolbar = (props) => (
     <header className={classes.Toolbar}>
-        <div>MENU</div>
+        <div onClick={props.showMenuFn} style={{cursor:'pointer'}}>MENU</div>
         <div className={classes.Logo}>
             <Logo/>
         </div>
@@ -19,3 +21,7 @@ export const Toolbar = (props) => (
         </nav>
     </header>
 );
+
+Toolbar.propType = {
+    showMenuFn: PropTypes.func
+};

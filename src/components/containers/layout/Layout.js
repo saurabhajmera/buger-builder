@@ -1,14 +1,25 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 import styles from './Layout.module.css';
 import {Toolbar} from "../../toolbar/Toolbar";
 import {SideDrawer} from "../../side-drawer/SideDrawer";
 
-const Layout = (props) => {
+export const Layout = (props) => {
+
+    const [layoutState, updateLayoutState] = useState({showBackDrop:true});
+
+    const backDropClickHandler = () => {
+        updateLayoutState({showBackDrop:false});
+    };
+
+    const showSideDrawer = () => {
+        updateLayoutState({showBackDrop:!layoutState.showBackDrop});
+    };
+
     return (
         <Fragment>
             {/*<div>Toolbar, SideDrawer, Backdrop</div>*/}
-            <SideDrawer/>
-            <Toolbar/>
+            <SideDrawer showBackdrop={layoutState.showBackDrop} backDropOnClick={backDropClickHandler}></SideDrawer>
+            <Toolbar showMenuFn={showSideDrawer}/>
                 <main className={styles.layoutStyle}>
                     {props.children}
                 </main>
@@ -18,4 +29,3 @@ const Layout = (props) => {
 };
 
 
-export default Layout

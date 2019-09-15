@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './BuildControl.module.css'
-import PropTypes from "prop-type";
+import PropTypes from "prop-types";
 
 export const BuildControl = (props) => {
     return (
@@ -18,8 +18,8 @@ export const BuildControl = (props) => {
 
 BuildControl.propType = {
     label: PropTypes.string,
-    addIngredientHandler: PropTypes.function,
-    removeIngredientHandler: PropTypes.function,
+    addIngredientHandler: PropTypes.func,
+    removeIngredientHandler: PropTypes.func,
     controlType: PropTypes.string,
     isRemoveIngredientDisabled: PropTypes.object
 };

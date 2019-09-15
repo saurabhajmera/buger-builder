@@ -1,6 +1,6 @@
 import React, {Fragment} from "react"
 import classes from "./Modal.module.css"
-import PropTypes from "prop-type";
+import PropTypes from "prop-types";
 import {Backdrop} from "../backdrop/Backdrop";
 
 export const Modal = (props) => {
@@ -26,6 +26,6 @@ export const Modal = (props) => {
 };
 
 Modal.propType = {
-    showModal: PropTypes.boolean,
-    hideModalFn: PropTypes.function
+    showModal: PropTypes.bool,
+    hideModalFn: PropTypes.func
 };
