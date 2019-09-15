@@ -68,7 +68,7 @@ const BurgerBuilder = (props) => {
 
         <Fragment>
             <Modal showModal={burgerState.showOrderSummary} hideModalFn={hideModal}>
-                <OrderSummary ingredients={burgerState.ingredients} hideModalFn={hideModal} totalCost={burgerState.totalCost.toFixed(2)}/>
+                <OrderSummary showOrderSummary={burgerState.showOrderSummary} ingredients={burgerState.ingredients} hideModalFn={hideModal} totalCost={burgerState.totalCost.toFixed(2)}/>
             </Modal>
             <div className={classes.OrderButtonPosition}><button className={classes.OrderButton} disabled={!burgerState.canOrder} onClick={()=>{showModal()}}>Order Now</button></div>
 

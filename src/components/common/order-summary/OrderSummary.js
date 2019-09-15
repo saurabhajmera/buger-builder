@@ -1,7 +1,7 @@
 import React, {Fragment} from "react"
 import {Button} from "../button/Button";
 
-export const OrderSummary = (props) => {
+const OrderSummaryNonMemo = (props) => {
     const ingredientsList = Object.keys(props.ingredients).map((key,index) => {
         return (
             <li key={key}><span  style={{textTransform:'capitalize'}}>{key}</span> - <span>{props.ingredients[key]}</span></li>
@@ -36,3 +36,8 @@ export const OrderSummary = (props) => {
         </Fragment>
     );
 };
+const areEqual = (prevProps, nextProps) => {
+    return prevProps.showOrderSummary === nextProps.showOrderSummary;
+};
+
+export const OrderSummary = React.memo(OrderSummaryNonMemo, areEqual);

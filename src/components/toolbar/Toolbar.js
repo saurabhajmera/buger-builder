@@ -8,7 +8,12 @@ import PropTypes from "prop-types"
 
 export const Toolbar = (props) => (
     <header className={classes.Toolbar}>
-        <div onClick={props.showMenuFn} style={{cursor:'pointer'}}>MENU</div>
+        <div className={classes.DrawerToggle} onClick={props.showMenuFn} style={{cursor:'pointer'}}>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
         <div className={classes.Logo}>
             <Logo/>
         </div>
